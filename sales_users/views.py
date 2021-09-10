@@ -46,7 +46,22 @@ def insert_data(fetched_data):
     ContactData.objects.bulk_create(data_list)
         
 
-    
+    data_list = []
+    for data in users_dt:
+        data_list.append(UserData(
+            user_id = data['id'],
+            username= data['Username'],
+            lastname=data['LastName'],
+            firstname= data['FirstName'],
+            company_name = data['CompanyName'],
+            city =data['City'],
+            timezonesidekey =data['TimeZoneSidKey'],
+            aboutme = data['AboutMe'],
+            email = data['Email'],
+            isactive = data['IsActive']
+
+        ))
+    UserData.objects.bulk_create(data_list)
 
 
 
@@ -91,6 +106,8 @@ def get_data(request):
 def view_data(request):
     if request.method == 'GET':
         accounts_data = AccountData.objects.all()
+        users_det = UserData.objects.all()
+        contact_det = ContactData.objects.all()
         error = None
         try:
 

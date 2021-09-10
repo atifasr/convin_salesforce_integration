@@ -13,12 +13,12 @@ class UserData(models.Model):
     company_name= models.CharField(max_length=30,blank=True,null=True)
     city = models.CharField(max_length=20,null=True)
     timezonesidekey = models.CharField(max_length=20,null=True)
-    aboutme = models.TextField(blank=True,default='good')
+    aboutme = models.TextField(blank=True,default='good',null=True)
     email = models.EmailField(null=True)
     isactive = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.username
+        return self.lastname
 
 
 
