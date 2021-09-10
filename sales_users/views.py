@@ -105,20 +105,25 @@ def get_data(request):
 #store data in database and display it after retrieving
 def view_data(request):
     if request.method == 'GET':
-        accounts_data = AccountData.objects.all()
-        users_det = UserData.objects.all()
-        contact_det = ContactData.objects.all()
         error = None
-        try:
 
-            pass
+        try:
+            accounts_data = AccountData.objects.all()
+            users_det = UserData.objects.all()
+            contact_det = ContactData.objects.all()
+            data = {
+                'accounts_data':accounts_data,
+                'users_det':users_det,
+                'contact_det':contact_det,
+            }
         except ObjectDoesNotExist:
             print('data already exists')
             error = 'data already exists'
+            data = None
 
         return render(request,'sales_users/list.html',{
             'error':error,
-            'accounts_data':accounts_data
+            'data_context':data
         })
 
 

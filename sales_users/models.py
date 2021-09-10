@@ -33,6 +33,7 @@ class AccountData(models.Model):
         return self.name
 
 
+
 class ContactData(models.Model):
     contact_id = models.CharField(max_length=255,null=True)
     accountid = models.CharField(max_length=30,null=True)
@@ -52,3 +53,6 @@ class ContactData(models.Model):
             return ' '
         else:
             return self.firstname
+    @property
+    def return_record(self):
+        return self.contact_id+' '+self.accountid+ ' '+self.lastname+' '+self.firstname+' '+self.name+' '+self.mailingstreet+' '+self.phone_no+' '+self.birth_day+' '+self.lead_source+' '+self.email+' '+self.department+' '+self.photourl

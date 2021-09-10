@@ -1,25 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
+{% extends "sales_users/index.html"%}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <a href="/" class="btn btn-secondary">Home</a>
+    </div>
+</div>
         <div class="row">
             <div class="col-md-12">
-                <p>{{accounts_data}}</p>
+               
                 <table class="table table-light">
-                    <tbody>
+                    <thead>
                         <tr>
-                            <td></td>
+                            <th colspan="10">
+                                <b style="font-size: xx-large;">
+                                    Accounts Data 
+                                </b>
+                            </th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data_context.accounts_data %}
+                        <tr>
+                            <td>{{item.account_id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.photourl}}</td>
+                            <td>{{item.billingaddress}}</td>
+                            <td>{{item.account_number}}</td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th colspan="10">
+                                <b style="font-size: xx-large;">
+                                    Users data
+                                </b>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data_context.users_det %}
+                        <tr>
+                            <td>{{item.user_id}}</td>
+                            <td>{{item.username}}</td>
+                            <td>{{item.lastname}}</td>
+                            <td>{{item.firstname}}</td>
+                            <td>{{item.company_name}}</td>
+                            <td>{{item.city}}</td>
+                            <td>{{item.timezonesidekey}}</td>
+                            <td>{{item.aboutme}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.isactive}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th colspan="10">
+                                <b style="font-size: xx-large;">
+                                    Contact data 
+                                </b>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data_context.contact_det %}
+                        <tr>
+                            <td>{{item.contact_id}}</td>
+                            <td>{{item.accountid}}</td>
+                            <td>{{item.lastname}}</td>
+                            <td>{{item.firstname}}</td>
+                            <td>{{item.mailingstreet}}</td>
+                            <td>{{item.phone_no}}</td>
+                            <td>{{item.birth_day}}</td>
+                            <td>{{item.lead_source}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.department}}</td>
+                            <td>{{item.photourl}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+         
             </div>
         </div>
-    </div>
-</body>
-</html>
+{% endblock %}

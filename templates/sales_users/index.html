@@ -12,10 +12,16 @@
    
     <div class="container">
         {% block content %}
-        <div class="row">
+        <div class="row my-2 py-2">
             <div class="col-md-12">
-                Hello!
-                <a href="{% url 'users_data:get_data' %}" class="btn btn-secondary">get data </a>
+                <a href="/get_data/?push={{True}}" class="btn btn-secondary"> Push to Database </a>
+                <a href="/view_data/" class="btn btn-secondary">view data </a>
+            </div>
+         </div>
+        <div class="row my-2">
+            <div class="col-md-12">
+            
+                <a href="{% url 'users_data:get_data' %}" class="btn btn-secondary">Get data </a>
             
             <p>{{data}}</p>
            
@@ -70,10 +76,14 @@
                 </tbody>
             </table>
            
-            <a href="/get_data/?push={{True}}" class="btn btn-secondary"> Push to Database </a>
+            
 
             </div>
-        </div>
+           
+
+            </div>
+
+           
         {% endblock %}
     </div>
 </body>
