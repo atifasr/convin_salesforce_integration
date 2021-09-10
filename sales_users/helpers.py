@@ -1,7 +1,7 @@
 import requests
 from requests.models import requote_uri
 from .api_keys import access_token
-
+from .models import *
 
 #helper functions
 def users_data():
@@ -95,3 +95,57 @@ def users_data_list(resp_users):
         user_data = {}
 
     return users_data_list
+
+
+
+
+
+
+#bulk insert 
+
+def insert_data(fetched_data):
+    accounts_dt, contact_dt, users_dt = fetched_data
+    data_list = []
+    for data in accounts_dt:
+        data_list.append(AccountData(account_id = data['id'],
+        name=data['Name'],
+        photourl=data['PhotoUrl'],
+        billingaddress = data['BillingAddress'],
+        account_number = data['AccountNumber']))
+    AccountData.objects.bulk_create(data_list)
+
+    data_list = []
+    for data in contact_dt:
+        data_list.append(ContactData(contact_id= data['id'],
+        accountid=data['AccountId'],
+        lastname = data['LastName'],
+        firstname=data['FirstName'],
+        name=data['Name'],
+        mailingstreet = data['MailingStreet'],
+        phone_no = data['Phone'],
+        birth_day = data['Birthdate'],
+        lead_source = data['LeadSource'],
+        email = data['Email'],
+        department = data['Department'],
+        photourl =data['PhotoUrl']
+        ))
+    ContactData.objects.bulk_create(data_list)
+        
+
+    data_list = []
+    for data in users_dt:
+        data_list.append(UserData(
+            user_id = data['id'],
+            username= data['Username'],
+            lastname=data['LastName'],
+            firstname= data['FirstName'],
+            company_name = data['CompanyName'],
+            city =data['City'],
+            timezonesidekey =data['TimeZoneSidKey'],
+            aboutme = data['AboutMe'],
+            email = data['Email'],
+            isactive = data['IsActive']
+
+        ))
+    UserData.objects.bulk_create(data_list)
+
