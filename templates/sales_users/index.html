@@ -16,7 +16,62 @@
             <div class="col-md-12">
                 Hello!
                 <a href="{% url 'users_data:get_data' %}" class="btn btn-secondary">get data </a>
+            
             <p>{{data}}</p>
+           
+            <table class="table table-light">
+                
+                <thead>
+                    <tr>
+                        {% for key in data.accounts_data.0.keys%}
+                      <th scope="col">{{key}}</th>
+                     
+                        {% endfor %}
+                    </tr>
+                  </thead>
+                <tbody>
+                   
+                    <tr>
+                        <td></td>
+                    </tr>
+                  
+                </tbody>
+            </table>
+            <table class="table table-light">
+                
+                <thead>
+                    <tr>
+                        {% for key in item.0.keys%}
+                      <th scope="col">{{key}}</th>
+                     
+                        {% endfor %}
+                    </tr>
+                  </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-light">
+                
+                <thead>
+                    <tr>
+                        {% for key in item.0.keys%}
+                      <th scope="col">{{key}}</th>
+                     
+                        {% endfor %}
+                    </tr>
+                  </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+           
+            <a href="/get_data/?push={{True}}" class="btn btn-secondary"> Push to Database </a>
+
             </div>
         </div>
         {% endblock %}

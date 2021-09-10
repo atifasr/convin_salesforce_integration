@@ -64,7 +64,6 @@ def contact_data(resp_contacts):
         contact_data['Name'] = data['Name']
         contact_data['MailingStreet'] = data['MailingStreet']
         contact_data['Phone'] = data['Phone']
-        contact_data['MobilePhone'] = data['MobilePhone']
         contact_data['Birthdate'] = data['Birthdate']
         contact_data['LeadSource'] = data['LeadSource']
         contact_data['Email'] = data['Email']
@@ -75,3 +74,24 @@ def contact_data(resp_contacts):
         contact_data = {}
 
     return contact_data_list
+
+
+def users_data_list(resp_users):
+    users_data_list = []
+    user_data = {}
+    for data in resp_users['records']:
+        user_data['id'] = data['Id']
+        user_data['Username'] = data['Username']
+        user_data['LastName'] = data['LastName']
+        user_data['FirstName'] = data['FirstName']
+        user_data['CompanyName'] = data['CompanyName']
+        user_data['City'] = data['City']
+        user_data['TimeZoneSidKey'] = data['TimeZoneSidKey']
+        user_data['AboutMe'] = data['AboutMe']
+        user_data['Phone'] = data['Phone']
+        user_data['Email'] = data['Email']
+        user_data['IsActive'] = data['IsActive']
+        users_data_list.append(user_data)
+        user_data = {}
+
+    return users_data_list
